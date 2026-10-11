@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [v0.1.8] - 2026-10-11
+
+### Compatibility
+
+- Keep the OpenShell SDK schema aligned with runtime, gateway, and SDK modules in the current release cascade.
+
+
 ## [v0.1.7] - 2026-10-11
 
 ### Security
