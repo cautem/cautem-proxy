@@ -125,9 +125,9 @@ func ResolveAndFilter(ctx context.Context, host string, opts SSRFOptions) ([]net
 // DialSSRF resolves host once, applies SSRF filters, then dials only the
 // filtered addresses (no second lookup — DNS-rebinding TOCTOU safe).
 // When HTTP_PROXY/HTTPS_PROXY is set, opens a CONNECT tunnel through the corp
-// proxy to host:port. The corp proxy is a trusted boundary: it sees the raw
-// target, so combining it with policy AllowedIPs is fail-closed (refused) and
-// the dial is audit-logged as via-proxy.
+// proxy to a filtered IP. Hostname CONNECT is disabled because it would let
+// the upstream proxy resolve the destination again after local SSRF checks.
+// The dial is audit-logged as via-proxy.
 func DialSSRF(ctx context.Context, host, port string, opts SSRFOptions) (net.Conn, error) {
 	addrs, err := ResolveAndFilter(ctx, host, opts)
 	if err != nil {
@@ -135,14 +135,10 @@ func DialSSRF(ctx context.Context, host, port string, opts SSRFOptions) (net.Con
 	}
 	proxyURL, bypass := upstreamProxyURL(host, port, addrs)
 	if proxyURL != nil {
-		targetHost := addrs[0].String()
 		if strings.EqualFold(strings.TrimSpace(os.Getenv("CAUTEM_PROXY_CONNECT_BY_HOSTNAME")), "true") {
-			if len(opts.AllowedIPs) > 0 {
-				return nil, fmt.Errorf("ssrf: hostname CONNECT through an upstream proxy is incompatible with allowed_ips")
-			}
-			targetHost = host
+			return nil, fmt.Errorf("ssrf: hostname CONNECT through an upstream proxy is disabled because it would bypass the filtered destination IP")
 		}
-		return dialViaHTTPProxy(ctx, proxyURL, net.JoinHostPort(targetHost, port))
+		return dialViaHTTPProxy(ctx, proxyURL, net.JoinHostPort(addrs[0].String(), port))
 	}
 	if len(bypass) != 0 {
 		addrs = bypass

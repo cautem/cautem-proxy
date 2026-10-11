@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [v0.1.7] - 2026-10-11
+
+### Security
+
+- Always send the locally filtered IP as the upstream CONNECT target; reject hostname CONNECT mode to prevent a second, unchecked DNS resolution.
+
+### Changed
+
+- Update the OpenShell SDK to its latest version.
+
 ## [v0.1.6] - 2026-10-11
 
 ### Changed
