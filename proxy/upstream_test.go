@@ -208,7 +208,7 @@ func TestDialViaHTTPSProxyUsesConfiguredCABundle(t *testing.T) {
 	_ = conn.Close()
 }
 
-func TestDialViaUpstreamProxyUsesValidatedIPAndRejectsHostnameModeWithAllowedIPs(t *testing.T) {
+func TestDialViaUpstreamProxyUsesValidatedIPAndRejectsHostnameMode(t *testing.T) {
 	listener, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
 		t.Fatal(err)
@@ -250,8 +250,10 @@ func TestDialViaUpstreamProxyUsesValidatedIPAndRejectsHostnameModeWithAllowedIPs
 		t.Fatalf("CONNECT target=%q, want validated IP", got)
 	}
 	t.Setenv("CAUTEM_PROXY_CONNECT_BY_HOSTNAME", "true")
-	_, err = DialSSRF(context.Background(), "api.example.com", "443", SSRFOptions{AllowedIPs: []string{"8.8.8.8/32"}, LookupIPAddr: resolver})
-	if err == nil || !strings.Contains(err.Error(), "hostname CONNECT") {
-		t.Fatalf("expected hostname mode to fail closed with allowed IPs, got %v", err)
+	for _, allowedIPs := range [][]string{nil, {"8.8.8.8/32"}} {
+		_, err := DialSSRF(context.Background(), "api.example.com", "443", SSRFOptions{AllowedIPs: allowedIPs, LookupIPAddr: resolver})
+		if err == nil || !strings.Contains(err.Error(), "hostname CONNECT") {
+			t.Fatalf("expected hostname mode to fail closed with allowed_ips=%v, got %v", allowedIPs, err)
+		}
 	}
 }
