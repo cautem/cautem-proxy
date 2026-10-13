@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [v0.2.0] - 2026-10-13
+
+### Changed
+
+- Split GraphQL, MCP, WebSocket, and tunnel handling into focused protocol files while preserving the existing policy enforcement paths.
+
 ## [v0.1.8] - 2026-10-11
 
 ### Compatibility
