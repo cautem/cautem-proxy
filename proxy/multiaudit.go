@@ -48,6 +48,9 @@ type MultiAudit struct {
 	source   string
 	buf      []AuditLine
 	lastPush time.Time
+	pushWG   sync.WaitGroup
+	pushFail bool
+	closed   bool
 }
 
 // NewMultiAudit builds sinks. logDir empty skips file; pusher/sandbox empty skips push.
@@ -73,6 +76,9 @@ func NewMultiAudit(primary io.Writer, logDir, sandbox string, pusher LogPusher) 
 func (m *MultiAudit) Write(p []byte) (int, error) {
 	m.mu.Lock()
 	defer m.mu.Unlock()
+	if m.closed {
+		return 0, os.ErrClosed
+	}
 	writeErr := m.rotateFileLocked()
 	n := len(p)
 	writeSink := func(w io.Writer) {
@@ -118,11 +124,16 @@ func (m *MultiAudit) flushGWLocked() {
 	m.lastPush = time.Now()
 	pusher := m.pusher
 	sandbox := m.sandbox
+	m.pushWG.Add(1)
 	go func() {
+		defer m.pushWG.Done()
 		ctx, cancel := context.WithTimeout(context.Background(), auditPushTimeout)
 		defer cancel()
 		if err := pusher.PostLogs(ctx, sandbox, lines); err != nil {
 			slog.Warn("gateway audit delivery failed", slog.String("sandbox", sandbox), slogx.Err(err))
+			m.mu.Lock()
+			m.pushFail = true
+			m.mu.Unlock()
 		}
 	}()
 }
@@ -166,15 +177,40 @@ func (m *MultiAudit) rotateFileLocked() error {
 	return nil
 }
 
-// Close flushes gateway buffer and file.
+// Close flushes gateway buffer and file, then waits for the final gateway
+// delivery attempt so sandbox teardown cannot race the last log batch.
 func (m *MultiAudit) Close() error {
 	m.mu.Lock()
-	defer m.mu.Unlock()
-	m.flushGWLocked()
-	if m.file != nil {
-		return m.file.Close()
+	if !m.closed {
+		m.closed = true
+		m.flushGWLocked()
 	}
-	return nil
+	var fileErr error
+	if m.file != nil {
+		fileErr = m.file.Close()
+		m.file = nil
+	}
+	m.mu.Unlock()
+
+	done := make(chan struct{})
+	go func() {
+		m.pushWG.Wait()
+		close(done)
+	}()
+	timer := time.NewTimer(auditPushTimeout + time.Second)
+	defer timer.Stop()
+	select {
+	case <-done:
+	case <-timer.C:
+		return errors.Join(fileErr, errors.New("timed out waiting for gateway audit delivery"))
+	}
+	m.mu.Lock()
+	pushFailed := m.pushFail
+	m.mu.Unlock()
+	if pushFailed {
+		return errors.Join(fileErr, errors.New("gateway audit delivery failed"))
+	}
+	return fileErr
 }
 
 // Ensure MultiAudit is an io.Writer.
