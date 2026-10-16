@@ -1,4 +1,4 @@
-module github.com/cautem/cautem-proxy
+module github.com/cautem/quarshell-proxy
 
 go 1.27.0
 

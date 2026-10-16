@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/cautem/cautem-core/env"
-	"github.com/cautem/cautem-proxy/proxy"
+	"github.com/cautem/quarshell-proxy/proxy"
 )
 
 func TestRewriteHeaderQueryPathBasic(t *testing.T) {

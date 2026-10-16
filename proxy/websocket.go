@@ -12,7 +12,7 @@ import (
 
 	"github.com/cautem/cautem-core/engine"
 	"github.com/cautem/cautem-core/policy"
-	"github.com/cautem/cautem-proxy/proxy/middleware"
+	"github.com/cautem/quarshell-proxy/proxy/middleware"
 )
 
 func isWebsocketUpgrade(req *http.Request) bool {

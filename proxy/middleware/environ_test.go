@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/cautem/cautem-proxy/proxy/middleware"
+	"github.com/cautem/quarshell-proxy/proxy/middleware"
 )
 
 func TestFromEnviron(t *testing.T) {
