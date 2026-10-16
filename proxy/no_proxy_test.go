@@ -19,7 +19,7 @@ func addrList(values ...string) []netip.Addr {
 	return addrs
 }
 
-func TestNoProxyOpenShellCompatibility(t *testing.T) {
+func TestNoProxyCompatBehavior(t *testing.T) {
 	tests := []struct {
 		name, host, list string
 		port             uint16

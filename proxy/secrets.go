@@ -36,7 +36,7 @@ func FilterSecrets(secrets SecretStore, allowed []string) SecretStore {
 // endpoint that does not bind that credential key (OpenShell credential_endpoint_mismatch).
 var ErrCredentialEndpointMismatch = fmt.Errorf("credential_endpoint_mismatch")
 
-// PlaceholderKeysInRequest lists env keys referenced by cautem:/openshell:resolve:env markers
+// PlaceholderKeysInRequest lists env keys referenced by the legacy credential marker.
 // in path, query, and headers (including Basic).
 func PlaceholderKeysInRequest(req *http.Request) []string {
 	if req == nil {

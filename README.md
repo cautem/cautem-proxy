@@ -51,6 +51,13 @@ Usually run as the sandbox sidecar (started by `cautem-driver`), not as a standa
 cautem proxy --listen 127.0.0.1:3128 --policy ./policy.yaml
 ```
 
+On Linux and macOS the listener can also use a private Unix socket, for example
+`--listen unix:///run/user/1000/cautem/proxy.sock`. The socket directory must
+already exist, belong to the current user, and have no group or other access;
+the proxy creates the socket with mode `0600` and removes it on shutdown. VM
+workers use this listener with a guest-initiated vsock mapping, keeping the
+policy proxy off the guest's network interface.
+
 ---
 
 ## Package Structure
