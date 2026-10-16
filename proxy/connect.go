@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cautem/cautem-core/engine"
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/engine"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 const maxRawTunnelLifetime = 30 * time.Minute

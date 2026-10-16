@@ -11,7 +11,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/cautem/cautem-core/env"
+	"github.com/cautem/quarshell-core/env"
 )
 
 // SecretStore maps env key to secret value for placeholder rewrite.

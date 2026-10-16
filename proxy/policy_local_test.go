@@ -14,8 +14,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cautem/cautem-core/engine"
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/engine"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 func TestServePolicyLocalRoutes(t *testing.T) {

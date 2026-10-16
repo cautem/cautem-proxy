@@ -4,7 +4,7 @@ package service
 import (
 	"context"
 
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 // PolicySource loads the active egress policy document.
