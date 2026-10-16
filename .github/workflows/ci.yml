@@ -66,8 +66,8 @@ jobs:
               fi
             done
             if [[ -d slogx ]]; then
-              echo '  github.com/cautem/slogx v0.1.0-alpha.1 => ./slogx'
-              echo '  github.com/cautem/slogx v0.1.3 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.0-alpha.1 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.3 => ./slogx'
             fi
             echo ')'
           } > "${{ github.workspace }}/go.work"
@@ -138,8 +138,8 @@ jobs:
               fi
             done
             if [[ -d slogx ]]; then
-              echo '  github.com/cautem/slogx v0.1.0-alpha.1 => ./slogx'
-              echo '  github.com/cautem/slogx v0.1.3 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.0-alpha.1 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.3 => ./slogx'
             fi
             echo ')'
           } > "${{ github.workspace }}/go.work"
@@ -210,8 +210,8 @@ jobs:
               fi
             done
             if [[ -d slogx ]]; then
-              echo '  github.com/cautem/slogx v0.1.0-alpha.1 => ./slogx'
-              echo '  github.com/cautem/slogx v0.1.3 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.0-alpha.1 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.3 => ./slogx'
             fi
             echo ')'
           } > "${{ github.workspace }}/go.work"
@@ -280,8 +280,8 @@ jobs:
               fi
             done
             if [[ -d slogx ]]; then
-              echo '  github.com/cautem/slogx v0.1.0-alpha.1 => ./slogx'
-              echo '  github.com/cautem/slogx v0.1.3 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.0-alpha.1 => ./slogx'
+              echo '  github.com/cautem/quarshell-slogx v0.1.3 => ./slogx'
             fi
             echo ')'
           } > "${{ github.workspace }}/go.work"

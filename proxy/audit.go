@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cautem/slogx"
+	"github.com/cautem/quarshell-slogx"
 )
 
 // auditEvent is an internal security / lifecycle decision from the proxy.
