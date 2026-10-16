@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 func validateMCPMethodParams(method string, params *struct {

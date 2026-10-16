@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	middlewarev1 "github.com/cautem/cautem-core/upstreamproto/middlewarev1"
+	middlewarev1 "github.com/cautem/quarshell-core/upstreamproto/middlewarev1"
 	"google.golang.org/grpc"
 )
 

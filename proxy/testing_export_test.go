@@ -3,7 +3,7 @@ package proxy
 import (
 	"io"
 
-	"github.com/cautem/cautem-core/engine"
+	"github.com/cautem/quarshell-core/engine"
 )
 
 // NewServerForTests enables loopback only in test binaries.

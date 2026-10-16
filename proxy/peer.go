@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/cautem/cautem-core/defaults"
+	"github.com/cautem/quarshell-core/defaults"
 )
 
 type ctxKeyConn struct{}

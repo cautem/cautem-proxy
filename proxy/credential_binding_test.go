@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cautem/cautem-core/engine"
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/engine"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 func TestUninspectedCredentialPolicy(t *testing.T) {

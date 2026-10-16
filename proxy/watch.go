@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 // WatchPolicy polls path for content changes and calls Apply on the server.

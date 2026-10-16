@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 const defaultGraphQLMaxBodyBytes = 64 << 10

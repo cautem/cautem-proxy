@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cautem/cautem-core/engine"
+	"github.com/cautem/quarshell-core/engine"
 	"github.com/cautem/quarshell-proxy/proxy/middleware"
 )
 

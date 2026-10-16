@@ -20,7 +20,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/policy"
 	"gopkg.in/yaml.v3"
 )
 

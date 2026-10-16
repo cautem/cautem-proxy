@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cautem/cautem-core/env"
+	"github.com/cautem/quarshell-core/env"
 	"github.com/cautem/quarshell-proxy/proxy"
 )
 

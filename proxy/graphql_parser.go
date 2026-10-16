@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/cautem/cautem-core/policy"
+	"github.com/cautem/quarshell-core/policy"
 )
 
 type graphqlToken struct {
