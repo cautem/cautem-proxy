@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/cautem/cautem-core/engine"
-	"github.com/cautem/cautem-proxy/proxy/middleware"
+	"github.com/cautem/quarshell-proxy/proxy/middleware"
 )
 
 func (s *Server) mitmHTTPS(client net.Conn, clientBuf *bufio.Reader, backend net.Conn, host string, port int, eng engine.PolicyEngine, binary string) {
