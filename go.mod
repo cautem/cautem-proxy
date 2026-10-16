@@ -6,8 +6,8 @@ toolchain go1.27.2
 
 require (
 	github.com/NVIDIA/OpenShell/sdk/go v0.0.0-20261013191600-5a7728c304b5
-	github.com/cautem/quarshell-core v0.3.1-0.20261016151917-f75458088399
-	github.com/cautem/quarshell-slogx v0.1.4-0.20261016153436-5ec8e199a72f
+	github.com/cautem/quarshell-core v0.3.1
+	github.com/cautem/quarshell-slogx v0.1.4
 	github.com/go-jose/go-jose/v4 v4.1.5
 	github.com/spiffe/go-spiffe/v2 v2.9.0
 	google.golang.org/grpc v1.84.0
