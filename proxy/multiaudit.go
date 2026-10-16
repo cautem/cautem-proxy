@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cautem/slogx"
+	"github.com/cautem/quarshell-slogx"
 )
 
 // AuditLine is one OCSF/observation line pushed to a gateway log sink.

@@ -23,7 +23,7 @@ import (
 	"github.com/cautem/quarshell-core/engine"
 	"github.com/cautem/quarshell-core/policy"
 	"github.com/cautem/quarshell-proxy/proxy/middleware"
-	"github.com/cautem/slogx"
+	"github.com/cautem/quarshell-slogx"
 )
 
 // EgressProxy applies policy and serves egress for a sandbox network.
