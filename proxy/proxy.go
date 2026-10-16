@@ -222,7 +222,7 @@ func (s *Server) ListenAndServe(ctx context.Context, addr string) error {
 	if s.configErr != nil {
 		return fmt.Errorf("proxy configuration: %w", s.configErr)
 	}
-	ln, err := net.Listen("tcp", addr)
+	ln, err := listenProxy(addr)
 	if err != nil {
 		s.logger().Error("proxy listener bind failed", slog.String("op", "proxy.serve"), slog.String("addr", addr), slogx.Err(err))
 		return fmt.Errorf("proxy listen: %w", err)

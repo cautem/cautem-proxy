@@ -8,7 +8,7 @@ import (
 	"github.com/cautem/cautem-core/policy"
 )
 
-func TestOpenShellQuerySelectorsDecideEveryRepeatedValue(t *testing.T) {
+func TestCompatQuerySelectorsDecideEveryRepeatedValue(t *testing.T) {
 	doc, err := policy.Parse([]byte(`version: 1
 network_policies:
   api:
@@ -59,7 +59,7 @@ network_policies:
 	}
 }
 
-func TestOpenShellQueryDecoding(t *testing.T) {
+func TestCompatQueryDecoding(t *testing.T) {
 	query, err := parsePolicyQuery("&&x=a+b&x=a%2Bb&empty&=value&semi=a;b")
 	if err != nil {
 		t.Fatal(err)

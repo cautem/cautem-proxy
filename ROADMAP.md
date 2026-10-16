@@ -1,6 +1,6 @@
 # Roadmap — cautem-proxy
 
-Status: **v0.2.0** (release prepared) · Depends on core `v0.2.0`; slogx `v0.1.3`
+Status: **v0.3.0** (release prepared) · Depends on core `v0.3.0`; slogx `v0.1.3`
 
 ## This module
 
@@ -13,4 +13,4 @@ Status: **v0.2.0** (release prepared) · Depends on core `v0.2.0`; slogx `v0.1.3
 
 ## Release
 
-Requires cautem-core `v0.2.0` · tagged after core in the release cascade.
+Requires cautem-core `v0.3.0` · tagged after core in the release cascade.

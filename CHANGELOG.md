@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [v0.3.0] - 2026-10-16
+
+### Added
+
+- Support policy proxy listeners on private Unix sockets for host-side VM brokers; enforce owner-only socket directory and mode `0600` on the socket.
+
 ## [v0.2.0] - 2026-10-13
 
 ### Changed
